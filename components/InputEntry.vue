@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const name = ref('')
+const nameInput = ref('')
 
 const router = useRouter()
 function go() {
-  if (name.value)
-    router.push(`/hi/${encodeURIComponent(name.value)}`)
+  if (nameInput.value)
+    router.push(`/hi/${encodeURIComponent(nameInput.value)}`)
 }
 </script>
 
@@ -12,7 +12,7 @@ function go() {
   <div>
     <input
       id="input"
-      v-model="name"
+      v-model="nameInput"
       placeholder="What's your name?"
       type="text" autocomplete="off"
       p="x-4 y-2" m="t-5" w="250px"
@@ -24,7 +24,7 @@ function go() {
     <div>
       <button
         m-3 text-sm btn
-        :disabled="!name"
+        :disabled="!nameInput"
         @click="go"
       >
         GO
