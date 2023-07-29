@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
+    // 'nuxt-vuefire',
   ],
 
   experimental: {
@@ -61,4 +62,5 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
+
 })

@@ -4,6 +4,20 @@ import { appName } from '~/constants'
 useHead({
   title: appName,
 })
+
+import * as mqtt from 'mqtt'
+
+const client = mqtt.connect('mqtt://test.mosquitto.org')
+
+client.on('connect', () => {
+  alert(mqtt)
+  client.subscribe('presence', (err: any) => {
+    if (!err)
+      client.publish('presence', 'Hello mqtt')
+  })
+})
+
+
 </script>
 
 <template>
