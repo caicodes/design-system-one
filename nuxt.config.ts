@@ -3,14 +3,8 @@ import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
 export default defineNuxtConfig({
-  modules: [
-    '@vueuse/nuxt',
-    '@unocss/nuxt',
-    '@pinia/nuxt',
-    '@nuxtjs/color-mode',
-    '@vite-pwa/nuxt',
-    // 'nuxt-vuefire',
-  ],
+  modules: ['@vueuse/nuxt', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/color-mode', // 'nuxt-vuefire',
+  '@vite-pwa/nuxt', 'nuxt-vuefire'],
 
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
