@@ -3,8 +3,7 @@ import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/color-mode', // 'nuxt-vuefire',
-  '@vite-pwa/nuxt', 'nuxt-vuefire'],
+  modules: ['@vueuse/nuxt', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/color-mode', '@vite-pwa/nuxt', 'nuxt-vuefire'],
 
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
@@ -60,7 +59,23 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
+
+      // cms/api
       wpUri: process.env.WP_URI,
+      datoCmsPublicReadOnlyToken: 'ae0eac9bea14dc97db0d82dcffd1a2',
+
+    },
+  },
+
+  vuefire: {
+    config: {
+      apiKey: 'AIzaSyCs4Ogm7exYrsH0y4Nh5r7SyHqzYCqw1fI',
+      authDomain: 'phoenix-unleashed.firebaseapp.com',
+      projectId: 'phoenix-unleashed',
+      storageBucket: 'phoenix-unleashed.appspot.com',
+      messagingSenderId: '520189661205',
+      appId: '1:520189661205:web:ed31e59a5ae9dce05d7e1c',
+      measurementId: 'G-G2PF1V52T1',
     },
   },
 
