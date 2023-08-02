@@ -1,5 +1,5 @@
 <template>
-  <div bg-base-100 mx-auto h-screen w-screen>
+  <div mx-auto h-screen w-screen bg-base-100>
     <Navbar />
     <main class="px-10 py-20 text-center">
       <slot />

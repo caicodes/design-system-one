@@ -40,24 +40,24 @@
 </script>
 
 <template>
-  <div class="navbar bg-base-300">
+  <div class="bg-base-300 navbar">
     <div class="flex-1">
-      <a class="btn-ghost text-xl normal-case btn">daisyUI</a>
+      <a class="text-xl normal-case btn btn-ghost">octivUI</a>
     </div>
     <div class="flex-none">
       <div class="dropdown dropdown-end">
-        <label tabindex="0" class="btn-ghost btn-circle btn">
+        <label tabindex="0" class="btn btn-circle btn-ghost">
           <div class="indicator">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-            <span class="badge badge-sm indicator-item">8</span>
+            <span class="indicator-item badge badge-sm">8</span>
           </div>
         </label>
-        <div tabindex="0" class="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
+        <div tabindex="0" class="dropdown-content z-[1] mt-3 w-52 bg-base-100 shadow card card-compact">
           <div class="card-body">
             <span class="text-lg font-bold">8 Items</span>
             <span class="text-info">Subtotal: $999</span>
             <div class="card-actions">
-              <button class="btn-primary btn-block btn">
+              <button class="btn btn-primary btn-block">
                 View cart
               </button>
             </div>
@@ -65,12 +65,12 @@
         </div>
       </div>
       <div class="dropdown dropdown-end">
-        <label tabindex="0" class="btn-ghost btn-circle avatar btn">
+        <label tabindex="0" class="avatar btn btn-circle btn-ghost">
           <div class="w-10 rounded-full">
-            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg">
+            <img src="/imgs/abstract-particles-bg.jpeg" alt="">
           </div>
         </label>
-        <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+        <ul tabindex="0" class="dropdown-content z-[1] mt-3 w-52 bg-base-100 p-2 shadow menu rounded-box menu-sm">
           <li>
             <a class="justify-between">
               Profile
