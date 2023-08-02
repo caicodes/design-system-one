@@ -1,4 +1,6 @@
 import * as process from 'node:process'
+import { presetUno } from 'unocss'
+import { presetDaisy } from 'unocss-preset-daisy'
 import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
@@ -17,6 +19,12 @@ export default defineNuxtConfig({
   css: [
     '@unocss/reset/tailwind.css',
   ],
+
+  unocss: {
+    presets: [presetUno({
+      darkMode: ['class', '[data-theme="dark"]'],
+    }), presetDaisy()],
+  },
 
   colorMode: {
     classSuffix: '',

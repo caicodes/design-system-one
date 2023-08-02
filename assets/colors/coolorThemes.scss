@@ -1,0 +1,55 @@
+/* SCSS HEX */
+$rich-black: #050512ff;
+$raisin-black: #161928ff;
+$raisin-black-2: #1e2333ff;
+$space-cadet: #262c3eff;
+$french-gray: #bbc3c9ff;
+$fire-brick: #c21228ff;
+
+/* SCSS HSL */
+$rich-black: hsla(240, 57%, 5%, 1);
+$raisin-black: hsla(230, 29%, 12%, 1);
+$raisin-black-2: hsla(226, 26%, 16%, 1);
+$space-cadet: hsla(225, 24%, 20%, 1);
+$french-gray: hsla(206, 11%, 76%, 1);
+$fire-brick: hsla(353, 83%, 42%, 1);
+
+/* SCSS RGB */
+$rich-black: rgba(5, 5, 18, 1);
+$raisin-black: rgba(22, 25, 40, 1);
+$raisin-black-2: rgba(30, 35, 51, 1);
+$space-cadet: rgba(38, 44, 62, 1);
+$french-gray: rgba(187, 195, 201, 1);
+$fire-brick: rgba(194, 18, 40, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #050512ff, #161928ff, #1e2333ff, #262c3eff, #bbc3c9ff, #c21228ff);
+$gradient-right: linear-gradient(90deg, #050512ff, #161928ff, #1e2333ff, #262c3eff, #bbc3c9ff, #c21228ff);
+$gradient-bottom: linear-gradient(180deg, #050512ff, #161928ff, #1e2333ff, #262c3eff, #bbc3c9ff, #c21228ff);
+$gradient-left: linear-gradient(270deg, #050512ff, #161928ff, #1e2333ff, #262c3eff, #bbc3c9ff, #c21228ff);
+$gradient-top-right: linear-gradient(45deg, #050512ff, #161928ff, #1e2333ff, #262c3eff, #bbc3c9ff, #c21228ff);
+$gradient-bottom-right: linear-gradient(135deg, #050512ff, #161928ff, #1e2333ff, #262c3eff, #bbc3c9ff, #c21228ff);
+$gradient-top-left: linear-gradient(225deg, #050512ff, #161928ff, #1e2333ff, #262c3eff, #bbc3c9ff, #c21228ff);
+$gradient-bottom-left: linear-gradient(315deg, #050512ff, #161928ff, #1e2333ff, #262c3eff, #bbc3c9ff, #c21228ff);
+$gradient-radial: radial-gradient(#050512ff, #161928ff, #1e2333ff, #262c3eff, #bbc3c9ff, #c21228ff);
+
+
+// mapping to design system as theme vars, light dark modes, status colors, etc..
+:root {
+    /* CSS HEX */
+    --rich-black: #050512ff;
+    --raisin-black: #161928ff;
+    --raisin-black-2: #1e2333ff;
+    --space-cadet: #262c3eff;
+    --french-gray: #bbc3c9ff;
+    --fire-brick: #c21228ff;
+
+    /* CSS HSL */
+    --rich-black: hsla(240, 57%, 5%, 1);
+    --raisin-black: hsla(230, 29%, 12%, 1);
+    --raisin-black-2: hsla(226, 26%, 16%, 1);
+    --space-cadet: hsla(225, 24%, 20%, 1);
+    --french-gray: hsla(206, 11%, 76%, 1);
+    --fire-brick: hsla(353, 83%, 42%, 1);
+
+}

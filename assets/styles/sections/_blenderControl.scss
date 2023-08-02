@@ -1,0 +1,56 @@
+.blender-main-wrapper {
+    .content-wrapper {
+         padding: 1rem !important;
+}}
+
+.blender-control__item .orion-dropdown {
+  font-size: var(--font-9) !important;
+}
+
+.blender-control__item-wrapper {
+
+    // width: 12.5%;
+    min-height: 103px;
+
+    label {
+        font-size: var(--font-9) !important;
+        padding: 6px !important;
+      }
+
+
+      .blender-control__item {
+        font-size: var(--font-9);
+        color: #e8ebed;
+        text-align: center;
+        margin-bottom: 8px !important;
+    
+        label {
+            color: #818f99;
+            margin-bottom: 4px;
+            font-size: var(--font-10);
+          }
+    
+ 
+      }
+
+
+      .barSignal {
+        margin: 2px 16px !important;
+      }
+
+  }
+
+.assignment .blender-control__item-wrapper {
+  margin-right: 4px;
+}
+
+ .blender-control__item-wrapper.dryadds:last-child {
+  margin-right: -2px;
+}
+
+.blender-control__item-wrapper .da13_special {
+  width: 100%;
+  border-right: 1px solid #3b4957;
+  padding-right: 0.25rem;
+  margin-right: 0.125rem;
+}
