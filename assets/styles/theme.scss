@@ -1,1 +1,14 @@
-@import '../colors/octivOne'
+@import '../colors/octivOne';
+@import '../colors/blueParticles';
+
+html,
+body [data-theme='light'] {
+    color: $rich-black;
+    background-color: $french-gray;
+}
+
+html,
+body [data-theme='dark'] {
+    color: $french-gray;
+    background-color: $rich-black;
+}
