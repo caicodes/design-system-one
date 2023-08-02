@@ -1,0 +1,92 @@
+// clean up and extract any shared,
+// set a clean basic standard, use
+// panel and use top-level-view class
+// scroping / also inherhits
+
+// .panel
+// .header
+// h4 /* panel header titles */
+// .content
+
+.spread-controls-view {
+  .label {
+    text-align: center;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: var(--font-16);
+    color: $color-stone;
+  }
+
+  .value {
+    color: $color-halliburton-red;
+  }
+
+  .heading {
+    color: $color-stone;
+  }
+
+  .sub-heading {
+    color: $color-stone;
+  }
+
+  .error-msg {
+    color: $color-error-red;
+  }
+
+  .warning-msg {
+    color: $color-warning;
+  }
+
+  .header {
+    button.stopped {
+      background-color: $bg-button-stopped;
+      &:hover {
+        color: rgba($color-white, 65%);
+      }
+    }
+    button.started {
+      background-color: $bg-button-started;
+    }
+    button.btn {
+      padding: 0.25rem 0.5rem;
+      font-size: var(--font-12);
+      border-radius: 0.25rem 0 0 0.25rem;
+
+      min-height: 1.75rem;
+    }
+
+    .orion_menu--container {
+      height: 24px;
+    }
+
+    // orion_menu_dropdown rename classes... no orion...
+    button.orion_menu_dropdown {
+      padding: 0rem;
+      min-height: 1.75rem;
+      margin-top: -0.25rem;
+
+      img {
+        &.orion_menu__carrot {
+          margin-bottom: 0.25rem;
+        }
+      }
+    }
+  }
+}
+
+// random to be cleaned but dumped here for now...
+.spread-contol-confirmation-modal h5 {
+  font-size: var(--font-20);
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  margin-bottom: 0;
+}
+.spread-contol-confirmation-modal .question {
+  line-height: 35px;
+  font-size: var(--font-14);
+  font-weight: 500;
+  font-family: Barlow;
+  color: #e8eced;
+}
+

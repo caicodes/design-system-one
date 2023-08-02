@@ -1,0 +1,14 @@
+// used in spread-
+svg#ZeusTruck {
+  --label-color: #818f99;
+  --data-color: #e8eced;
+  --btn-text-color: #c9cfd4;
+  --btn-bg-color: #141d27;
+  --engine-color: yellow;
+  --circle-stroke-color: transparent;
+  --circle-bg-color: transparent;
+}
+
+svg#Speedometer path#bgGradient {
+  --speedometer-gradient-stroke: white;
+}

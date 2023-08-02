@@ -1,0 +1,32 @@
+/*
+    manifolds-view
+*/
+
+.manifolds-view {
+  --stroke-color-manifold-slot-available: rgba(255, 255, 255, 0.23);
+  --bg-color-unpositioned-pumps-bin: rgba(13, 18, 70, 0.711);
+  --bg-color-unpositioned-pumps: $bg-color-unpositioned-pumps;
+  --border-color-unpositioned-pumps: $border-color-unpositioned-pumps;
+  --bg-color-unpositioned-pumps-focus: $bg-color-unpositioned-pumps;
+  --bg-color-unpositioned-pumps-bin: rgba(#0e1117, 0.75);
+}
+
+.unpositioned-pumps {
+  position: absolute;
+  width: 44hw;
+  z-index: 99999;
+}
+
+.bin {
+  padding: 1rem;
+  width: 10vw;
+  left: 29rem;
+  top: 17rem;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgba(14, 17, 23, 0.618);
+  z-index: 999;
+  gap: 1.25rem;
+}
+

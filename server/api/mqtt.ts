@@ -8,3 +8,15 @@ client.on('connect', () => {
       client.publish('presence', 'Hello mqtt')
   })
 })
+
+/**
+ * use Hive MQTT
+ */
+
+/**
+ * use Mosquitto
+ */
+
+/**
+ * use EMX
+ */
