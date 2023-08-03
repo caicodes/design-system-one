@@ -16,6 +16,9 @@ dependencies:
   firebase-functions:
     specifier: ^4.4.1
     version: 4.4.1(firebase-admin@11.10.1)
+  gsap:
+    specifier: npm:@gsap/shockingly@^3.12.2
+    version: /@gsap/shockingly@3.12.2
   mqtt:
     specifier: ^5.0.0
     version: 5.0.0
@@ -2586,6 +2589,10 @@ packages:
       long: 4.0.0
       protobufjs: 7.2.4
       yargs: 17.7.2
+
+  /@gsap/shockingly@3.12.2:
+    resolution: {integrity: sha512-kYmkwAQ53GzBxs+e8pu/BCzUMrfJoBSEE1JI5HB6wUGDt9yuR/XTwSNfRCBzbuzy/zR9HgqubZnU59LhOiOzwA==}
+    dev: false
 
   /@hapi/hoek@9.3.0:
     resolution: {integrity: sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==}

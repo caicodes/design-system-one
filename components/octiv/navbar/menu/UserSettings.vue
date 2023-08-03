@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const yo = ref('yo')
+const yo = ref('yo, this u sets')
 </script>
 
 <template>
@@ -16,7 +16,7 @@ const yo = ref('yo')
           <span class="badge">New</span>
         </a>
       </li>
-      <li><a>Settings</a></li>
+      <li><a> {{ yo }}</a></li>
       <li><a>Logout</a></li>
     </ul>
   </div>
