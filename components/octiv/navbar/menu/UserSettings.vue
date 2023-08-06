@@ -42,7 +42,3 @@ const { locale } = useI18n()
     </ul>
   </div>
 </template>
-
-<style scoped>
-
-</style>

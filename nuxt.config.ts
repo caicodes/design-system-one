@@ -77,6 +77,15 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+
+    // private keys with runtime config...
+    mqttBrokerUrl: process.env.BROKER_URL,
+    mqttBrokerUsername: process.env.BROKER_USERNAME,
+    mqttBrokerPassword: process.env.BROKER_PASSWORD,
+    mqttBrokerProtocol: process.env.BROKER_PROTOCOL,
+    mqttBrokerProtocolPath: process.env.BROKER_PROTOCOL_PATH,
+    mqttBrokerProtocolPort: process.env.BROKER_PROTOCOL_PORT,
+
     public: {
       // cms/api
       wpUri: process.env.WP_URI,
