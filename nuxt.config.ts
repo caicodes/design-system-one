@@ -22,9 +22,7 @@ export default defineNuxtConfig({
   ],
 
   unocss: {
-    presets: [presetUno({
-      darkMode: ['class', '[data-theme="dark"]'],
-    }), presetDaisy()],
+    presets: <object | any>[presetUno(), presetDaisy()],
   },
 
   colorMode: {

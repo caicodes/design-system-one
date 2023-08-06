@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import gsap from 'gsap'
-import ManifoldPumpSvg from '~/components/octiv/ManifoldPumpSvg.vue'
+import { Draggable } from 'gsap/Draggable'
+
+const pumpsBin = ref()
 
 const setupPage = {
   opacity: 1,
@@ -12,25 +14,31 @@ const setupPage = {
 
 const pageRef = ref()
 const tl = gsap.timeline()
+gsap.registerPlugin(Draggable)
+
 onMounted(() => {
   tl.set(pageRef.value, { opacity: 0 })
   tl.to(pageRef.value, setupPage)
 })
 </script>
 
-<!-- eslint-disable vue/html-indent -->
 <template>
   <div ref="pageRef" class="page" min-h-screen>
+    <div ref="pumpsBin" class="bin">
+      <div v-for="bp in 5" :key="bp">
+        <OctivManifoldBinPumpSvg :bp="bp" />
+      </div>
+    </div>
     <div grid grid-cols-2>
       <div v-for="c in 2" :key="c">
         <div grid grid-cols-2>
           <div v-for="j in 2" :key="j" :class="`col-${j}`">
             <div v-for="r in 3" :key="r" class="manifold">
               <!-- manifold -->
-              <div v-for="i in 5" :key="i" class="pump" :class="`inner-col-${i}`">
+              <div v-for="i in 5" :key="i" class="slot" :class="`inner-col-${i}`">
                 <!-- add the full manifold slot as an svg that fits the space  -->
                 <div w-full>
-                  <ManifoldPumpSvg />
+                  <OctivManifoldPumpSvg />
                 </div>
               </div>
             </div>
@@ -42,19 +50,15 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-.pump {
+.slot {
 
   padding: .25vh 0;
 
   @apply flex cursor-move text-xs font-100 uppercase border-opacity-25;
 
-  &:hover {
-    @apply bg-accent
-  }
-}
-
-.col-2 .pump svg {
-  transform: rotate(-180deg);
+  // &:hover {
+  //   @apply bg-accent
+  // }
 }
 
 .col-1 .manifold {
@@ -67,5 +71,22 @@ onMounted(() => {
 
 .manifold {
   @apply my-2
+}
+
+.page {
+  opacity: 0;
+}
+
+.bin {
+
+  display: flex;
+  flex-wrap: wrap;
+  text {
+    text-anchor: start;
+  }
+
+  background-color: $raisin-black;
+  padding: 1rem;
+  width: 10rem;
 }
 </style>

@@ -1,35 +1,86 @@
 <script setup lang="ts">
 import gsap from 'gsap'
+import { Draggable } from 'gsap/Draggable'
+import { useManifoldAnimations } from '~/composables/animations/useManifoldAnimations'
 
-const setupLeftSidePump = {
-  opacity: 1,
-  background: '#1a2430',
-  color: 'white',
-  padding: '2rem',
-  borderRadius: '0rem',
-}
+const pumpSvg = ref()
+const isDragging = ref(false)
+const ENGINE = ref()
+const SAPID_LABEL = ref()
+const VALUE_LABEL_PAIR_BPM = ref()
+const REAR_INDICATOR_FRONT = ref()
+const REAR_INDICATOR_BACK = ref()
+const LINE_REAR_CONNECTION = ref()
+const VALUE_LABEL_PAIR_RPM = ref()
+const TRUCK_SHAPE = ref()
 
-const pageRef = ref()
-const tl = gsap.timeline()
+const { animateTo } = useManifoldAnimations()
+gsap.registerPlugin(Draggable)
+
 onMounted(() => {
-  tl.set(pageRef.value, { opacity: 0 })
-  tl.to(pageRef.value, setupLeftSidePump)
+  // use a timeline to handle all animations
+  const tl = gsap.timeline({ yoyo: true })
+  // setup dragging...
+  Draggable.create(pumpSvg.value, {
+    type: 'x,y',
+    onDragStart: () => {
+      // play animation to bin properties
+    },
+    onDrag() {
+      // gsap.to(pumpSvg.value, { ...animateTo.hidePumpInfo })
+      isDragging.value = true
+      gsap.to(SAPID_LABEL.value, { ...animateTo.sapIdBin })
+      gsap.to([
+        LINE_REAR_CONNECTION.value,
+        REAR_INDICATOR_BACK.value,
+        REAR_INDICATOR_FRONT.value,
+        LINE_REAR_CONNECTION.value,
+        VALUE_LABEL_PAIR_BPM.value,
+        VALUE_LABEL_PAIR_RPM.value,
+        ENGINE.value,
+      ],
+      { ...animateTo.hidePumpInfo })
+      gsap.to(
+        TRUCK_SHAPE.value, { transformOrigin: 'center center', scaleX: 0.5 })
+    },
+    onDragEnd() {
+      isDragging.value = false
+      tl.to(pumpSvg.value, { ...animateTo.pumpSvgStartPosition, duration: 0.2 })
+      tl.to(SAPID_LABEL.value, { ...animateTo.sapIdPump })
+      gsap.to(TRUCK_SHAPE.value, { scaleX: 1 })
+      gsap.to([
+        TRUCK_SHAPE.value,
+        LINE_REAR_CONNECTION.value,
+        REAR_INDICATOR_BACK.value,
+        REAR_INDICATOR_FRONT.value,
+        LINE_REAR_CONNECTION.value,
+        VALUE_LABEL_PAIR_BPM.value,
+        VALUE_LABEL_PAIR_RPM.value,
+        ENGINE.value,
+      ], { ...animateTo.showPumpInfo })
+    },
+  })
 })
 </script>
 
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 451.003 64.004">
+  <svg
+    ref="pumpSvg"
+    :class="{ hidePumpInfo: isDragging }" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 0 451.003 64.004"
+  >
     <defs>
       <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
         <stop offset="0" stop-color="#062345" />
         <stop offset="1" stop-color="#01070e" />
       </radialGradient>
     </defs>
-    <g id="TRUCK_SHAPE" transform="translate(73)">
+    <g ref="TRUCK_SHAPE" transform="translate(73)">
       <g id="TRUCK_SHAPE-MAIN" data-name="TRUCK_SHAPE" transform="translate(-0.001 0.004)" fill="url(#radial-gradient)">
         <path
+          id="BG"
           d="M 236.4879913330078 63.50077819824219 L 202.8272247314453 63.49991989135742 L 202.8272247314453 58.72229385375977 L 202.8272247314453 58.22229385375977 L 202.3272247314453 58.22229385375977 L 150.7967987060547 58.22229385375977 L 150.2967987060547 58.22229385375977 L 150.2967987060547 58.72229385375977 L 150.2967987060547 63.49990844726562 L 119.1506118774414 63.49990844726562 L 119.1506118774414 58.72229385375977 L 119.1506118774414 58.22229385375977 L 118.6506118774414 58.22229385375977 L 113.5466842651367 58.22229385375977 L 113.0466842651367 58.22229385375977 L 113.0466842651367 58.72229385375977 L 113.0466842651367 63.49990844726562 L 81.90141296386719 63.49990844726562 L 81.90141296386719 58.72229385375977 L 81.90141296386719 58.22229385375977 L 81.40141296386719 58.22229385375977 L 60.72172546386719 58.22229385375977 L 60.72172546386719 49.57740783691406 L 60.72172546386719 49.07740783691406 L 60.22172546386719 49.07740783691406 L 57.25530242919922 49.07740783691406 L 56.75530242919922 49.07740783691406 L 56.75530242919922 49.57740783691406 L 56.75530242919922 58.22229385375977 L 50.90941619873047 58.22229385375977 L 50.40941619873047 58.22229385375977 L 50.40941619873047 58.72229385375977 L 50.40941619873047 60.86109924316406 L 17.26430130004883 60.86109924316406 L 17.26430130004883 56.08079147338867 L 17.26430130004883 55.73179244995117 L 16.93672370910645 55.61144638061523 L 0.5009161829948425 49.57397079467773 L 0.5009161829948425 44.95590591430664 L 0.5009161829948425 14.42323017120361 L 16.93672370910645 8.385753631591797 L 17.26430130004883 8.265407562255859 L 17.26430130004883 7.916407585144043 L 17.26430130004883 3.136100053787231 L 50.40941619873047 3.136100053787231 L 50.40941619873047 5.27490758895874 L 50.40941619873047 5.77490758895874 L 50.90941619873047 5.77490758895874 L 56.75530242919922 5.77490758895874 L 56.75530242919922 14.41979217529297 L 56.75530242919922 14.91979217529297 L 57.25530242919922 14.91979217529297 L 60.22172546386719 14.91979217529297 L 60.72172546386719 14.91979217529297 L 60.72172546386719 14.41979217529297 L 60.72172546386719 5.77490758895874 L 81.40141296386719 5.77490758895874 L 81.90141296386719 5.77490758895874 L 81.90141296386719 5.27490758895874 L 81.90141296386719 0.496407687664032 L 113.0466842651367 0.496407687664032 L 113.0466842651367 5.27490758895874 L 113.0466842651367 5.77490758895874 L 113.5466842651367 5.77490758895874 L 118.6506118774414 5.77490758895874 L 119.1506118774414 5.77490758895874 L 119.1506118774414 5.27490758895874 L 119.1506118774414 0.496407687664032 L 150.2967987060547 0.496407687664032 L 150.2967987060547 5.27490758895874 L 150.2967987060547 5.77490758895874 L 150.7967987060547 5.77490758895874 L 202.3272247314453 5.77490758895874 L 202.8272247314453 5.77490758895874 L 202.8272247314453 5.27490758895874 L 202.8272247314453 0.496407687664032 L 236.4879913330078 0.496407687664032 L 236.4879913330078 5.27490758895874 L 236.4879913330078 5.77490758895874 L 236.9879913330078 5.77490758895874 L 241.9551086425781 5.77490758895874 L 242.4551086425781 5.77490758895874 L 242.4551086425781 5.27490758895874 L 242.4551086425781 0.496407687664032 L 276.3598022460938 0.496407687664032 L 276.3598022460938 5.27490758895874 L 276.3598022460938 5.77490758895874 L 276.8598022460938 5.77490758895874 L 297.5007934570312 5.77490758895874 L 297.5007934570312 19.04040718078613 L 297.5007934570312 58.22229385375977 L 276.8598022460938 58.22229385375977 L 276.3598022460938 58.22229385375977 L 276.3598022460938 58.72229385375977 L 276.3598022460938 63.49899673461914 L 242.4551086425781 63.49989318847656 L 242.4551086425781 58.72229385375977 L 242.4551086425781 58.22229385375977 L 241.9551086425781 58.22229385375977 L 236.9879913330078 58.22229385375977 L 236.4879913330078 58.22229385375977 L 236.4879913330078 58.72229385375977 L 236.4879913330078 63.50077819824219 Z"
-          stroke="none"
+          stroke="none" fill="url(#radial-gradient)"
         />
         <path
           id="OUTLINE"
@@ -38,117 +89,124 @@ onMounted(() => {
         />
       </g>
     </g>
-    <path
-      id="LINE_REAR_CONNECTION" data-name="Path 43" d="M80.5-.5,0,0" transform="translate(370.5 32.5)" fill="none"
-      stroke="#828e99" stroke-width="1"
-    />
-    <line
-      id="Line_9" data-name="Line 9" x1="72.5" transform="translate(0 29.5)" fill="none" stroke="#3b4957"
-      stroke-width="1" opacity="0"
-    />
-    <text
-      id="SAPID_LABEL" data-name="11515548" transform="translate(17 38)" fill="#a7adb9" font-size="14"
-      font-family="BarlowCondensed-Regular, Barlow Condensed" letter-spacing="0.018em" text-anchor="start"
-    >
-      <tspan x="0" y="0">12345</tspan>
-    </text>
-    <g id="ENGINE" transform="translate(83 24)">
+
+    <g id="truckInfo">
       <path
-        id="enginePath" data-name="engine-path"
-        d="M-15152-8200v-13l2,.019V-8200Zm-15.34-1.908h-3.435v-3.725h-1.774v3.1H-15174v-7.574h1.451v2.985h1.774v-3.526h3.431l1.71-2.053h3.488v-1.812h-3.477V-8216h8.4v1.489h-3.473v1.813h3.348l2.616,3.027h1.729v6.66h-1.71l-2.635,3-8.237.008Z"
-        transform="translate(15173.999 8216.001)" fill="lime" stroke="rgba(0,0,0,0)" stroke-miterlimit="10"
-        stroke-width="0"
+        ref="LINE_REAR_CONNECTION" data-name="Path 43" d="M80.5-.5,0,0" transform="translate(370.5 32.5)" fill="none"
+        stroke="#828e99" stroke-width="1"
       />
-    </g>
-    <g id="VALUE_LABEL_PAIR" transform="translate(163 20)">
+
+      <g ref="ENGINE" transform="translate(83 24)">
+        <path
+          id="enginePath" data-name="engine-path"
+          d="M-15152-8200v-13l2,.019V-8200Zm-15.34-1.908h-3.435v-3.725h-1.774v3.1H-15174v-7.574h1.451v2.985h1.774v-3.526h3.431l1.71-2.053h3.488v-1.812h-3.477V-8216h8.4v1.489h-3.473v1.813h3.348l2.616,3.027h1.729v6.66h-1.71l-2.635,3-8.237.008Z"
+          transform="translate(15173.999 8216.001)" fill="lime" stroke="rgba(0,0,0,0)" stroke-miterlimit="10"
+          stroke-width="0"
+        />
+      </g>
+      <g ref="VALUE_LABEL_PAIR_RPM" transform="translate(163 20)">
+        <text
+          id="RPM_LABEL" transform="translate(54 20)" fill="#828e99" font-size="16"
+          font-family="BarlowCondensed-Regular, Barlow Condensed" text-anchor="start"
+        >
+          <tspan x="-22.464" y="0">RPM</tspan>
+        </text>
+        <text
+          id="RPM_VALUE" data-name="1900" transform="translate(31 20)" fill="#fff" font-size="20"
+          style="background-color: aqua; padding: 30px;" font-family="BarlowCondensed-Regular, Barlow Condensed"
+          letter-spacing="0.018em" text-anchor="end"
+        >
+          <tspan x="0" y="0">1900</tspan>
+        </text>
+      </g>
+      <g ref="REAR_INDICATOR_FRONT" transform="translate(351 26)">
+        <path
+          id="Path_34" data-name="Path 34" d="M352.605,46a6,6,0,1,1-6-6,6,6,0,0,1,6,6"
+          transform="translate(-340.605 -40)" fill="red" stroke="#fff" stroke-width="1"
+        />
+      </g>
+      <g ref="REAR_INDICATOR_BACK" data-name="REAR_INDICATOR" transform="translate(331 26)">
+        <path
+          id="Path_34-2" data-name="Path 34" d="M352.605,46a6,6,0,1,1-6-6,6,6,0,0,1,6,6"
+          transform="translate(-340.605 -40)" fill="red" stroke="#fff" stroke-width="1"
+        />
+      </g>
+      <g ref="VALUE_LABEL_PAIR_BPM" data-name="VALUE_LABEL_PAIR" transform="translate(272 20)">
+        <text
+          id="BPM_LABEL" transform="translate(44 20)" fill="#828e99" font-size="16"
+          font-family="BarlowCondensed-Regular, Barlow Condensed" text-anchor="start"
+        >
+          <tspan x="-22.448" y="0">BPM</tspan>
+        </text>
+        <text
+          id="BPM_VALUE" data-name="5.9" transform="translate(21 20)" fill="#fff" font-size="20"
+          font-family="BarlowCondensed-Regular, Barlow Condensed" letter-spacing="0.018em" text-anchor="end"
+        >
+          <tspan x="0" y="0">5.0</tspan>
+        </text>
+      </g>
+
       <text
-        id="RPM" transform="translate(54 20)" fill="#828e99" font-size="16"
-        font-family="BarlowCondensed-Regular, Barlow Condensed" text-anchor="start"
+        ref="SAPID_LABEL" data-name="11515548" transform="translate(17 38)" fill="#a7adb9" font-size="14"
+        font-family="BarlowCondensed-Regular, Barlow Condensed" letter-spacing="0.018em" text-anchor="start"
       >
-        <tspan x="-22.464" y="0">RPM</tspan>
+        12345
       </text>
-      <text
-        id="_1900" data-name="1900" transform="translate(31 20)" fill="#fff" font-size="20"
-        style="background-color: aqua; padding: 30px;" width="200"
-        font-family="BarlowCondensed-Regular, Barlow Condensed" letter-spacing="0.018em" text-anchor="end"
-      >
-        <tspan x="0" y="0">1900</tspan>
-      </text>
-    </g>
-    <g id="REAR_INDICATOR_FRONT" transform="translate(351 26)">
-      <path
-        id="Path_34" data-name="Path 34" d="M352.605,46a6,6,0,1,1-6-6,6,6,0,0,1,6,6"
-        transform="translate(-340.605 -40)" fill="red" stroke="#fff" stroke-width="1"
-      />
-    </g>
-    <g id="REAR_INDICATOR_BACK" data-name="REAR_INDICATOR" transform="translate(331 26)">
-      <path
-        id="Path_34-2" data-name="Path 34" d="M352.605,46a6,6,0,1,1-6-6,6,6,0,0,1,6,6"
-        transform="translate(-340.605 -40)" fill="red" stroke="#fff" stroke-width="1"
-      />
-    </g>
-    <g id="VALUE_LABEL_PAIR-2" data-name="VALUE_LABEL_PAIR" transform="translate(272 20)">
-      <text
-        id="BPM" transform="translate(44 20)" fill="#828e99" font-size="16"
-        font-family="BarlowCondensed-Regular, Barlow Condensed" text-anchor="start"
-      >
-        <tspan x="-22.448" y="0">BPM</tspan>
-      </text>
-      <text
-        id="_5.9" data-name="5.9" transform="translate(21 20)" fill="#fff" font-size="20"
-        font-family="BarlowCondensed-Regular, Barlow Condensed" letter-spacing="0.018em" text-anchor="end"
-      >
-        <tspan x="0" y="0">5.0</tspan>
-      </text>
+
     </g>
   </svg>
 </template>
 
 <style lang="scss">
 svg {
-    --label-bg-color: white;
+  --label-bg-col-or: white;
 }
-.col-2 svg {
-    g#VALUE_LABEL_PAIR-2 text {
-        fill: hotpink;
-    }
-}
+
 #LINE_REAR_CONNECTION {
-    stroke: orange;
-    opacity: .5;
+  stroke: orange;
+  opacity: .5;
 }
+
 #REAR_INDICATOR path {
-    fill:white;
-    stroke: green;
+  fill: white;
+  stroke: green;
 }
+
 #REAR_INDICATOR-2 path {
-    fill: $french-gray;
-    stroke: cyan;
+  fill: $french-gray;
+  stroke: cyan;
 }
+
 #TRUCK_SHAPE-MAIN {
-    fill: transparent;
+  fill: transparent;
 }
+
 #ENGINE path {
-    fill: rebeccapurple;
+  fill: rebeccapurple;
 }
+
 #REAR_INDICATOR_BACK path {
-    fill: orange;
-    stroke: orange;
+  fill: orange;
+  stroke: orange;
 }
+
 #REAR_INDICATOR_FRONT path {
-    fill: lime;
-    stroke: lime;
+  fill: lime;
+  stroke: lime;
 }
+
 #SAPID_LABEL {
-    fill: lightskyblue;
+  fill: lightskyblue;
 }
-
-.col-2 #SAPID_LABEL {
-    fill: hotpink;
+path#BG {
+    opacity: 0;
+  }
+.hidePumpInfo {
+  path#BG {
+    opacity: 1;
+  }
+  g#pumpInfo {
+    display: none;
+  }
 }
-
-.col-2 {
-    #ENGINE path {
-        transform-origin: center;
-}}
 </style>
