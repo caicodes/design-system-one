@@ -1,0 +1,22 @@
+@import '../colors/octivOne';
+@import '../colors/blueParticles';
+
+
+$surface: #1A2430;
+$onSurface: #2B3847;
+
+:root {
+    --text-primary: $surface;
+}
+
+html,
+body [data-theme='light'] {
+    color: $surface;
+    background-color: $onSurface;
+}
+
+html,
+body [data-theme='dark'] {
+    color: $onSurface;
+    background-color: surface;
+}

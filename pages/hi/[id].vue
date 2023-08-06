@@ -18,8 +18,12 @@ definePageMeta({
     <h3 text-2xl font-500>
       Hi,
     </h3>
-    <div text-xl>
+    <div text-xl text-secondary>
+      {{ $t('welcome') }}
       {{ name }}!
+      <h3 text-4xl text-primary>
+        {{ $t('distance') }}
+      </h3>
     </div>
 
     <template v-if="user.otherNames.length">
@@ -35,7 +39,7 @@ definePageMeta({
       </p>
     </template>
 
-    <Counter />
+    <ExamplesCounter />
 
     <div>
       <NuxtLink

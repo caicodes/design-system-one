@@ -1,0 +1,3 @@
+<template>
+  <OctivNavbarMain />
+</template>

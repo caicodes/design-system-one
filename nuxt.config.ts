@@ -5,7 +5,19 @@ import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/color-mode', '@vite-pwa/nuxt', 'nuxt-vuefire'],
+  modules: [
+    '@vueuse/nuxt',
+    '@unocss/nuxt',
+    '@pinia/nuxt',
+    '@nuxtjs/i18n',
+    '@nuxtjs/color-mode',
+    '@vite-pwa/nuxt',
+    'nuxt-vuefire',
+  ],
+
+  i18n: {
+    vueI18n: './i18n.config.ts',
+  },
 
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
@@ -18,12 +30,11 @@ export default defineNuxtConfig({
 
   css: [
     '@unocss/reset/tailwind.css',
+    '~/assets/styles/theme.scss',
   ],
 
   unocss: {
-    presets: [presetUno({
-      darkMode: ['class', '[data-theme="dark"]'],
-    }), presetDaisy()],
+    presets: <any>[presetUno(), presetDaisy()],
   },
 
   colorMode: {
@@ -67,11 +78,9 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-
       // cms/api
       wpUri: process.env.WP_URI,
       datoCmsPublicReadOnlyToken: 'ae0eac9bea14dc97db0d82dcffd1a2',
-
     },
   },
 
@@ -84,6 +93,16 @@ export default defineNuxtConfig({
       messagingSenderId: '520189661205',
       appId: '1:520189661205:web:ed31e59a5ae9dce05d7e1c',
       measurementId: 'G-G2PF1V52T1',
+    },
+  },
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: { // to use color vars and sass vars in components...
+          additionalData: '@use "@/assets/colors/_octivOne.scss" as *;',
+        },
+      },
     },
   },
 
