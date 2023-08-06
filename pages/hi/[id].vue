@@ -19,6 +19,7 @@ definePageMeta({
       Hi,
     </h3>
     <div text-xl>
+      {{ $t('welcome') }}
       {{ name }}!
     </div>
 

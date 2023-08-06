@@ -1,22 +1,54 @@
 import * as mqtt from 'mqtt'
 
-const client = mqtt.connect('mqtt://test.mosquitto.org')
+/**
+ * convert to env before git push...+
+ */
+const url = 'mqtt://13.65.37.32/mqtt'
+const options = {
+  clean: true,
+  connectTimeout: 4000,
+  clientId: 'test1212',
+  username: 'kelvin',
+  password: 'kelvin',
+  port: 28883,
+}
+
+let res = 'not connected'
+let msg: any
+let pay: any
+
+const client = mqtt.connect(url, options)
+const topic = 'Hal/ACE/EquipmentState/Outstream'
 
 client.on('connect', () => {
-  client.subscribe('presence', (err: any) => {
+  res = 'connected'
+  client.subscribe(topic, (err: any) => {
     if (!err)
-      client.publish('presence', 'Hello mqtt')
+      res = 'subscribed!'
   })
 })
 
-/**
- * use Hive MQTT
- */
+export default defineEventHandler(() => ({
+  res,
+  topic,
+  msg,
+  pay,
+}))
 
 /**
- * use Mosquitto
+ * Server API Route
+ * @server /server/api/mqtt
  */
+/*
 
-/**
- * use EMX
- */
+// payload base64 decrypt
+// make decrypted version avail as server api route
+// connect that route to a pinia store for the eq state outstream
+// top level objs... manifolds, pumps...
+
+// then use api.messages to subscribe/publish/resp api communication model
+
+// position pump...
+// manifold stuff...
+
+*/

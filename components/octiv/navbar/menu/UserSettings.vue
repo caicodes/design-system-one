@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const yo = ref('yo, this u sets')
+const { locale } = useI18n()
 </script>
 
 <template>
@@ -17,7 +18,27 @@ const yo = ref('yo, this u sets')
         </a>
       </li>
       <li><a> {{ yo }}</a></li>
+      <li><a> {{ locale }} {{ $t('welcome') }}</a></li>
       <li><a>Logout</a></li>
+      <li>
+        <form>
+          <select v-model="locale">
+            <option value="en">
+              en
+            </option>
+            <option value="en_metric">
+              en metric
+            </option>
+            <option value="fr">
+              fr
+            </option>
+            <option value="jp">
+              jp
+            </option>
+          </select>
+          <p>{{ $t('welcome') }}</p>
+        </form>
+      </li>
     </ul>
   </div>
 </template>
