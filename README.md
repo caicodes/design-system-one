@@ -1,7 +1,7 @@
 <p align="center">
 
 <h2 align="center">
-voya one
+phoenix one
 </h2><br>
 
 <pre align="center">
