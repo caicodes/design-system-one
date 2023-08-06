@@ -5,7 +5,19 @@ import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/color-mode', '@vite-pwa/nuxt', 'nuxt-vuefire'],
+  modules: [
+    '@vueuse/nuxt',
+    '@unocss/nuxt',
+    '@pinia/nuxt',
+    '@nuxtjs/i18n',
+    '@nuxtjs/color-mode',
+    '@vite-pwa/nuxt',
+    'nuxt-vuefire',
+  ],
+
+  i18n: {
+    vueI18n: './i18n.config.ts',
+  },
 
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
@@ -22,7 +34,7 @@ export default defineNuxtConfig({
   ],
 
   unocss: {
-    presets: <object | any>[presetUno(), presetDaisy()],
+    presets: <any>[presetUno(), presetDaisy()],
   },
 
   colorMode: {

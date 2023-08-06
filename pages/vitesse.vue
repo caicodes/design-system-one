@@ -1,12 +1,13 @@
 <script setup lang="ts">
 const online = useOnline()
+// const { locale } = useI18n()
 </script>
 
 <template>
   <div>
     <Suspense>
       <ClientOnly>
-        <PageView v-if="online" />
+        <ExamplesPageView v-if="online" />
         <div v-else text-gray:80>
           You're offline
         </div>
@@ -17,6 +18,6 @@ const online = useOnline()
         </div>
       </template>
     </Suspense>
-    <InputEntry />
+    <ExamplesInputEntry />
   </div>
 </template>

@@ -3,12 +3,6 @@ export default defineI18nConfig(() => ({
   locale: 'en',
   messages: {
     en: {
-      message: {
-        hello: '{msg} world',
-        welcome: 'welcome',
-      },
-    },
-    /*
       welcome: 'Welcome',
       distance: 'Miles from home...',
     },
@@ -24,6 +18,6 @@ export default defineI18nConfig(() => ({
       welcome: 'いらっしゃいませ',
       distance: '自宅から数マイル...',
     },
-    */
+
   },
 }))
