@@ -1,16 +1,35 @@
 import * as mqtt from 'mqtt'
 
+const config = useRuntimeConfig()
 /**
  * convert to env before git push...+
- */
-const url = 'mqtt://13.65.37.32/mqtt'
+
+    mqttBrokerUrl: process.env.BROKER_URL,
+    mqttBrokerUsername: process.env.BROKER_USERNAME,
+    mqttBrokerPassword: process.env.BROKER_PASSWORD,
+    mqttBrokerProtocol: process.env.BROKER_PROTOCOL,
+    mqttBrokerProtocolPath: process.env.BROKER_PROTOCOL_PATH,
+    mqttBrokerProtocolPort: process.env.BROKER_PROTOCOL_PORT,
+*/
+
+// const url = 'mqtt://13.65.37.32/mqtt'
+
+const brokerUrl = config.mqttBrokerUrl
+const brokerUsername = config.mqttBrokerUsername
+const brokerPassword = config.mqttBrokerPassword
+const brokerProtocol = config.mqttBrokerProtocol
+const brokerProtocolPath = config.mqttBrokerProtocolPath
+const brokerProtocolPort = config.mqttBrokerProtocolPort
+
+const url = `${brokerProtocol}:${brokerUrl}:${brokerProtocolPort}/${brokerProtocolPath}`
+
 const options = {
   clean: true,
   connectTimeout: 4000,
-  clientId: 'test1212',
-  username: 'kelvin',
-  password: 'kelvin',
-  port: 28883,
+  clientId: 'ds_one_111',
+  username: brokerUsername,
+  password: brokerPassword,
+  port: brokerProtocolPort,
 }
 
 let res = 'not connected'
